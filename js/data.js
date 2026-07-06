@@ -35,4 +35,22 @@ const architectures = [
     authors: "Hochreiter & Schmidhuber",
     paper: "https://www.bioinf.jku.at/publications/older/2604.pdf",
   },
+  {
+    name: "GNN (Graph Neural Network)",
+    year: 2009,
+    tags: ["graph", "message-passing", "relational", "non-euclidean"],
+    description:
+      "Neural network that operates on graph-structured data. Nodes aggregate features from neighbors through message passing, enabling learning on non-Euclidean domains.",
+    authors: "Scarselli et al.",
+    paper: "https://ieeexplore.ieee.org/document/4700287",
+  },
+  {
+    name: "RWKV",
+    year: 2023,
+    tags: ["sequence", "recurrent", "attention-free", "linear", "parallel-trainable"],
+    description:
+      "RNN architecture that can be trained in parallel like a Transformer but runs as an RNN during inference. Combines transformer-level performance with O(1) inference cost per token.",
+    authors: "Bo Peng",
+    paper: "https://arxiv.org/abs/2305.13048",
+  },
 ];
