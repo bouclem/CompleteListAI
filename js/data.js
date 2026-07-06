@@ -80,4 +80,31 @@ const architectures = [
     authors: "Ian Goodfellow et al.",
     paper: "https://arxiv.org/abs/1406.2661",
   },
+  {
+    name: "FNN (Feedforward Neural Network)",
+    year: 1958,
+    tags: ["foundational", "feedforward", "acyclic"],
+    description:
+      "The simplest neural network topology — data flows in one direction from input through hidden layers to output, with no cycles or feedback connections. MLPs are a subset of FNNs.",
+    authors: "Rosenblatt, Werbos, Rumelhart et al.",
+    paper: "https://en.wikipedia.org/wiki/Feedforward_neural_network",
+  },
+  {
+    name: "Mamba",
+    year: 2023,
+    tags: ["sequence", "state-space", "selective", "attention-free", "linear"],
+    description:
+      "Selective state space model that lets SSM parameters be input-dependent, enabling content-based reasoning. Achieves 5x higher throughput than Transformers with linear scaling in sequence length.",
+    authors: "Albert Gu, Tri Dao",
+    paper: "https://arxiv.org/abs/2312.00752",
+  },
+  {
+    name: "SNN (Spiking Neural Network)",
+    year: 1997,
+    tags: ["neuromorphic", "biological", "spiking", "event-driven", "energy-efficient"],
+    description:
+      "Biologically inspired network where neurons communicate via discrete spikes over time, rather than continuous activation values. Closer to how real brains work — enables energy-efficient neuromorphic computing.",
+    authors: "Maass et al.",
+    paper: "https://www.sciencedirect.com/science/article/pii/S0893608097000467",
+  },
 ];
