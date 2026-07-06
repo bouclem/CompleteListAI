@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete List of AI Architectures</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Complete List of AI Architectures</h1>
+    <p class="subtitle">A growing catalog of AI architectures and beyond &mdash; search, filter, and explore.</p>
+  </header>
+
+  <main>
+    <section class="controls">
+      <input type="text" id="search-input" placeholder="Search by name..." />
+
+      <div class="filter-group">
+        <label for="tag-filter">Tag</label>
+        <select id="tag-filter">
+          <option value="">All tags</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="year-filter">Year</label>
+        <select id="year-filter">
+          <option value="">All years</option>
+        </select>
+      </div>
+
+      <button id="reset-btn" type="button">Reset</button>
+    </section>
+
+    <p id="result-count" class="result-count"></p>
+
+    <section id="cards" class="cards"></section>
+  </main>
+
+  <footer>
+    <p>Progressively updated &mdash; contributions welcome</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
