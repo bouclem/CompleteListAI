@@ -1,7 +1,7 @@
 (function () {
   const searchInput = document.getElementById("search-input");
   const tagFilter = document.getElementById("tag-filter");
-  const yearFilter = document.getElementById("year-filter");
+  const sortFilter = document.getElementById("sort-filter");
   const resetBtn = document.getElementById("reset-btn");
   const cardsContainer = document.getElementById("cards");
   const resultCount = document.getElementById("result-count");
@@ -12,12 +12,6 @@
     return Array.from(tagSet).sort();
   }
 
-  function getAllYears() {
-    const yearSet = new Set();
-    architectures.forEach((a) => yearSet.add(a.year));
-    return Array.from(yearSet).sort((a, b) => b - a);
-  }
-
   function populateFilters() {
     getAllTags().forEach((tag) => {
       const opt = document.createElement("option");
@@ -25,42 +19,54 @@
       opt.textContent = tag;
       tagFilter.appendChild(opt);
     });
+  }
 
-    getAllYears().forEach((year) => {
-      const opt = document.createElement("option");
-      opt.value = year;
-      opt.textContent = year;
-      yearFilter.appendChild(opt);
-    });
+  function sortItems(items, sortKey) {
+    const sorted = [...items];
+    switch (sortKey) {
+      case "name-asc":
+        sorted.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case "name-desc":
+        sorted.sort((a, b) => b.name.localeCompare(a.name));
+        break;
+      case "year-asc":
+        sorted.sort((a, b) => a.year - b.year);
+        break;
+      case "year-desc":
+        sorted.sort((a, b) => b.year - a.year);
+        break;
+    }
+    return sorted;
   }
 
   function render() {
     const query = searchInput.value.trim().toLowerCase();
     const selectedTag = tagFilter.value;
-    const selectedYear = yearFilter.value;
+    const sortKey = sortFilter.value;
 
     const filtered = architectures.filter((a) => {
       const matchesName = a.name.toLowerCase().includes(query);
       const matchesTag = !selectedTag || a.tags.includes(selectedTag);
-      const matchesYear =
-        !selectedYear || a.year === parseInt(selectedYear, 10);
-      return matchesName && matchesTag && matchesYear;
+      return matchesName && matchesTag;
     });
 
+    const sorted = sortItems(filtered, sortKey);
+
     resultCount.textContent =
-      filtered.length === 0
+      sorted.length === 0
         ? "No architectures found"
-        : `${filtered.length} architecture${filtered.length > 1 ? "s" : ""} found`;
+        : `${sorted.length} architecture${sorted.length > 1 ? "s" : ""} found`;
 
     cardsContainer.innerHTML = "";
 
-    if (filtered.length === 0) {
+    if (sorted.length === 0) {
       cardsContainer.innerHTML =
         '<p class="empty-state">No results match your filters.</p>';
       return;
     }
 
-    filtered.forEach((a) => {
+    sorted.forEach((a) => {
       const card = document.createElement("article");
       card.className = "card";
 
@@ -85,13 +91,13 @@
   function resetFilters() {
     searchInput.value = "";
     tagFilter.value = "";
-    yearFilter.value = "";
+    sortFilter.value = "name-asc";
     render();
   }
 
   searchInput.addEventListener("input", render);
   tagFilter.addEventListener("change", render);
-  yearFilter.addEventListener("change", render);
+  sortFilter.addEventListener("change", render);
   resetBtn.addEventListener("click", resetFilters);
 
   populateFilters();
