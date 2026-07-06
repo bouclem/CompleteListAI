@@ -53,4 +53,31 @@ const architectures = [
     authors: "Bo Peng",
     paper: "https://arxiv.org/abs/2305.13048",
   },
+  {
+    name: "Perceptron",
+    year: 1958,
+    tags: ["foundational", "classification", "linear", "binary"],
+    description:
+      "The simplest neural network unit — a single linear classifier that maps inputs to a binary output using a weighted sum and threshold activation. The building block of all neural networks.",
+    authors: "Frank Rosenblatt",
+    paper: "https://psycnet.apa.org/record/1959-09742-001",
+  },
+  {
+    name: "MLP (Multi-Layer Perceptron)",
+    year: 1986,
+    tags: ["foundational", "feedforward", "dense", "universal-approximator"],
+    description:
+      "Stacked layers of perceptrons with non-linear activation functions, trained via backpropagation. A universal function approximator and the simplest deep network architecture.",
+    authors: "Rumelhart, Hinton, Williams",
+    paper: "https://www.nature.com/articles/323533a0",
+  },
+  {
+    name: "GAN (Generative Adversarial Network)",
+    year: 2014,
+    tags: ["generative", "adversarial", "image-generation", "implicit"],
+    description:
+      "Two networks — a generator and a discriminator — trained in opposition. The generator creates fake samples, the discriminator tries to detect them. The equilibrium produces realistic synthetic data.",
+    authors: "Ian Goodfellow et al.",
+    paper: "https://arxiv.org/abs/1406.2661",
+  },
 ];
